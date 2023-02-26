@@ -41,5 +41,14 @@ export default function QueryProcessor(query: string): string {
     var rightm = parseInt(query.substring(index+13, query.length-1));
     return (leftm*rightm).toString();
   }
+  if (query.toLowerCase().includes("cube")){
+    var index = query.indexOf(":");
+    var substring = query.substring(index+1, query.length-1);
+    var split = substring.split(",");
+    for(var i =0 ;i < split.length; i++){
+      if (Math.sqrt(parseInt(split[i])) % 1 === 0 && Math.cbrt(parseInt(split[i])) % 1 === 0)
+        return split[i];
+    }
+  }
   return "";
 }
