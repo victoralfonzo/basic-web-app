@@ -27,6 +27,13 @@ export default function QueryProcessor(query: string): string {
     return largest.toString();
   }
 
+  if (query.toLowerCase().includes("plus")){
+    var lower = query.toLowerCase()
+    var index = lower.indexOf("plus");
+    var left = parseInt(lower.substring(0, index).replace("what is", ""));
+    var right = parseInt(query.substring(index+4, query.length-1));
+    return (left+right).toString();
+  }
 
   return "";
 }
