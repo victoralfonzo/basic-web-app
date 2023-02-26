@@ -34,6 +34,12 @@ export default function QueryProcessor(query: string): string {
     var right = parseInt(query.substring(index+4, query.length-1));
     return (left+right).toString();
   }
-
+  if (query.toLowerCase().includes("multiplied")){
+    var lower = query.toLowerCase()
+    var index = lower.indexOf("multiplied");
+    var leftm = parseInt(lower.substring(0, index).replace("what is", ""));
+    var rightm = parseInt(query.substring(index+13, query.length-1));
+    return (leftm*rightm).toString();
+  }
   return "";
 }
